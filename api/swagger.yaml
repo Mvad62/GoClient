@@ -1,0 +1,63 @@
+openapi: 3.0.1
+info:
+  title: Super Puper Demo API
+  description: A simple test ASP.NET Core web API
+  contact:
+    name: Super Programmer
+    email: Super.Programmer@hoff.ru
+  license:
+    name: Бабок не надо
+    url: http://hoff.ru
+  version: v1
+servers:
+- url: /
+paths:
+  /WeatherForecast:
+    get:
+      tags:
+      - WeatherForecast
+      summary: Получи все
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WeatherForecast'
+                x-content-type: text/plain
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WeatherForecast'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WeatherForecast'
+components:
+  schemas:
+    WeatherForecast:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date-time
+        temperatureC:
+          type: integer
+          format: int32
+        temperatureF:
+          type: integer
+          format: int32
+          readOnly: true
+        summary:
+          type: string
+          nullable: true
+      additionalProperties: false
+      example:
+        date: 2000-01-23T04:56:07.000+00:00
+        summary: summary
+        temperatureC: 0
+        temperatureF: 6
